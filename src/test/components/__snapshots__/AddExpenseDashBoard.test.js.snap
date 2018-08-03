@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shud add expense correctly 1`] = `
+<div>
+  <p>
+    This msg is from add dashboard 
+  </p>
+  <ExpenseForm
+    onSubmit={[Function]}
+  />
+</div>
+`;
+
+exports[`shud handle onSubmit 1`] = `
+<div>
+  <p>
+    This msg is from add dashboard 
+  </p>
+  <ExpenseForm
+    onSubmit={[Function]}
+  />
+</div>
+`;
