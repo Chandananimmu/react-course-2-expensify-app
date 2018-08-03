@@ -22,9 +22,7 @@ store.subscribe(() => {
 const expenseOne = store.dispatch(
   addExpense({ description: "Water bill", amount: 100, createdAt: 1000 })
 );
-const expenseTwo = store.dispatch(
-  addExpense({ description: "Gas bill", amount: 700, createdAt: 24000 })
-);
+
 const expenseThree = store.dispatch(
   addExpense({ description: "Gas bill", amount: 10, createdAt: 20084697609 })
 );
