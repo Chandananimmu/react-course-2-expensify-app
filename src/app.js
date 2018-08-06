@@ -13,6 +13,7 @@ import { setFilterText } from "./actions/filters";
 import {sortByDate} from "./actions/filters";
 import "react-dates/lib/css/_datepicker.css";
 const store = configureStore();
+console.log("hai");
 store.subscribe(() => {
   const state = store.getState();
   const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
