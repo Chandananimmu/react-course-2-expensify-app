@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shud render multiple of expenses 1`] = `
+<div>
+  <p>
+    Viewing 
+    3
+     expenses totalling
+     
+    $198.75
+  </p>
+</div>
+`;
+
+exports[`shud render no. of expenses 1`] = `
+<div>
+  <p>
+    Viewing 
+    1
+     expenses totalling
+     
+    $195.00
+  </p>
+</div>
+`;

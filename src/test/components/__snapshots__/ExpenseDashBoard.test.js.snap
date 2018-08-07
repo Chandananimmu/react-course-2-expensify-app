@@ -2,6 +2,7 @@
 
 exports[`shud render header correctly 1`] = `
 <div>
+  <Connect(ExpenseSummary) />
   <Connect(ExpenseList) />
   <Connect(ExpenseListFilter) />
 </div>

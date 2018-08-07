@@ -26,7 +26,7 @@ test("shud set filters correctly on text change",()=>{
   wrapper.find("input").simulate("change",{
     target:{  value }
     });
-  expect(setFilterText).toHaveBeenLastCalledWith(value);
+  expect(setFilterText).toHaveBeenLastCalledWith({text:value});
   expect(wrapper).toMatchSnapshot();
 })
 test("shud set filters correctly on sortby date ",()=>{
