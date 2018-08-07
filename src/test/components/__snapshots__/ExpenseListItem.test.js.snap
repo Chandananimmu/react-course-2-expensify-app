@@ -13,10 +13,9 @@ exports[`shud render ExpenseList with expenses 1`] = `
   </Link>
   <p>
      
-    19500
-  </p>
-  <p>
-    -345600000
+    $195.00
+    -
+    Dec 28th,1969
   </p>
 </div>
 `;
