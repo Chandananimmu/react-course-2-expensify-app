@@ -11,9 +11,12 @@ const config = {
 firebase.initializeApp(config);
 const database = firebase.database();
 export default database;
-database.ref('expenses').on('value',(snapshot)=>{
-     console.log(snapshot.val());
-   });
+database.ref('expenses').once('value').then((snapshot)=>{
+  const val=snapshot.val();
+  console.log(val);
+}).catch((e)=>{
+console.log("error in fectching",e);
+})
 
 
 
