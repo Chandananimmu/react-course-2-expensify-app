@@ -10,8 +10,12 @@ import configureStore from "./store/configureStore";
 import getVisibleExpenses from "./selectors/expenses";
 import { addExpense } from "./actions/expenses";
 import { setFilterText } from "./actions/filters";
-import {sortByDate} from "./actions/filters";
+import { sortByDate } from "./actions/filters";
 import "react-dates/lib/css/_datepicker.css";
+import "./firebase/firebase";
+//import "./playground/promises"
+
+//firebaseInit();
 const store = configureStore();
 console.log("hai");
 store.subscribe(() => {
@@ -20,24 +24,25 @@ store.subscribe(() => {
 
   //console.log(visibleExpenses);
 });
-const expenseOne = store.dispatch(
-  addExpense({ description: "Water bill", amount: 100, createdAt: 1000 })
-);
+// const expenseOne = store.dispatch(
+//   addExpense({ description: "Water bill", amount: 100, createdAt: 1000 })
+// );
 
-const expenseThree = store.dispatch(
-  addExpense({ description: "Gas bill", amount: 10, createdAt: 20084697609 })
-);
-const expensefour = store.dispatch(
-  addExpense({ description: "Tax bill", amount: 10, createdAt: 20084697609 })
-);
+// const expenseThree = store.dispatch(
+//   addExpense({ description: "Gas bill", amount: 10, createdAt: 20084697609 })
+// );
+// const expensefour = store.dispatch(
+//   addExpense({ description: "Tax bill", amount: 10, createdAt: 20084697609 })
+// );
 // store.dispatch(setFilterText({ text: "water" }));
 // setTimeout(()=>{
 //   store.dispatch(setFilterText({ text: "bill" }));
 // },3000)
-store.dispatch(sortByDate());
+//store.dispatch(sortByDate());
 const jsx = (
   <Provider store={store}>
     <Approuter />
   </Provider>
 );
+
 ReactDOM.render(jsx, document.getElementById("app"));
