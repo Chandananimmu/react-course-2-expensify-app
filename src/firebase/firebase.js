@@ -11,13 +11,9 @@ const config = {
 firebase.initializeApp(config);
 const database = firebase.database();
 export default database;
-database.ref('expenses').once('value').then((snapshot)=>{
-  const val=snapshot.val();
-  console.log(val);
-}).catch((e)=>{
-console.log("error in fectching",e);
-})
-
+database.ref('expenses').on('child_added',(snapshot)=>{
+         console.log(snapshot.val());
+    });
 
 
 
