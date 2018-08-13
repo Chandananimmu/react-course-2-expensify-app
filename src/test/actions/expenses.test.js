@@ -5,7 +5,8 @@ import {
   removeExpense,
   setExpenses,
   startSetExpenses,
-  startRemoveExpense
+  startRemoveExpense,
+  startEditExpense
 } from "../../actions/expenses";
 import expenses from "../fixtures/expenses";
 import configureMockStore from "redux-mock-store";
@@ -38,6 +39,26 @@ test("shud setup edit expense action obj", () => {
     }
   });
 });
+test("shud edit on start",(done)=>{
+const store=createMockStore({});
+const updates={
+  note:"haiyyyy"
+}
+store.dispatch(startEditExpense(expenses[2].id,updates)).then(()=>{
+  const action=store.getActions();
+  expect(action[0]).toEqual({
+    type:"EDIT_EXPENSE",
+    id:expenses[2].id,
+    updates
+  });
+  return database.ref(`expenses/${expenses[2].id}`).once("value");
+}).then((snapshot) => {
+  expect(snapshot.val().note).toEqual(updates.note);
+  done();
+
+});
+});
+
 test("shud set expenses",()=>{
   const action=setExpenses(expenses);
   expect(action).toEqual({

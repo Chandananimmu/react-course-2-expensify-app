@@ -58,6 +58,16 @@ export const editExpense = (id, updates) => ({
   id,
   updates
 });
+export const startEditExpense=(id,updates)=>{
+  return (dispatch)=>{
+    return database.ref(`expenses/${id}`).update(updates).then(()=>{
+      dispatch(editExpense(id,updates));
+      console.log(updated);
+    }).catch(()=>{
+      console.log(" nt updated");
+     });
+  }
+}
 export const setExpenses=(expenses)=>({
   type: "SET_EXPENSES",
   expenses
