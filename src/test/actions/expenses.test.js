@@ -2,7 +2,9 @@ import {
   startAddExpense,
   addExpense,
   editExpense,
-  removeExpense
+  removeExpense,
+  setExpenses,
+  startSetExpenses
 } from "../../actions/expenses";
 import expenses from "../fixtures/expenses";
 import configureMockStore from "redux-mock-store";
@@ -10,6 +12,14 @@ import thunk from "redux-thunk";
 import database from "../../firebase/firebase";
 
 const createMockStore = configureMockStore([thunk]);
+
+beforeEach((done)=>{
+  const expensedata={};
+  expenses.forEach(({id,description,note,amount,createdAt})=>{
+    expensedata[id]={description,note,amount,createdAt};
+  });
+  database.ref('expenses').set(expensedata).then(()=>done());
+});
 test("shud setup remove expense action obj", () => {
   const action = removeExpense({ id: "123abc" });
   expect(action).toEqual({
@@ -25,6 +35,24 @@ test("shud setup edit expense action obj", () => {
     updates: {
       note: "Hello"
     }
+  });
+});
+test("shud set expenses",()=>{
+  const action=setExpenses(expenses);
+  expect(action).toEqual({
+    type:"SET_EXPENSES" ,
+   expenses
+  });
+});
+test("shud fetch data",(done)=>{
+  const store=createMockStore({});
+  store.dispatch(startSetExpenses()).then(()=>{
+    const action=store.getActions();
+    expect(action[0]).toEqual({
+      type:'SET_EXPENSES',
+      expenses
+    });
+    done();
   });
 });
 test("shud setup add expense action obj", () => {
@@ -93,6 +121,7 @@ test("shud setup add expense action obj for default", () => {
     
     });
 });
+
 // test("shud setup add expense action obj for default", () => {
 //   const action = addExpense();
 //   expect(action).toEqual({

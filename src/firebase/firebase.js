@@ -1,5 +1,7 @@
 import * as firebase from "firebase";
 
+
+
 const config = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -11,12 +13,9 @@ const config = {
 firebase.initializeApp(config);
 const database = firebase.database();
 export default database;
-database.ref('expenses').on('child_added',(snapshot)=>{
-         console.log(snapshot.val());
-    });
-
-
-
+// database.ref('expenses').on('child_added',(snapshot)=>{
+//          console.log(snapshot.val());
+//     });
 
 
 

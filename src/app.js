@@ -8,7 +8,7 @@ import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 import configureStore from "./store/configureStore";
 import getVisibleExpenses from "./selectors/expenses";
-import { addExpense } from "./actions/expenses";
+import { startSetExpenses } from "./actions/expenses";
 import { setFilterText } from "./actions/filters";
 import { sortByDate } from "./actions/filters";
 import "react-dates/lib/css/_datepicker.css";
@@ -18,12 +18,12 @@ import "./firebase/firebase";
 //firebaseInit();
 const store = configureStore();
 console.log("hai");
-store.subscribe(() => {
-  const state = store.getState();
-  const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
+//store.subscribe(() => {
+  //const state = store.getState();
+  //const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 
   //console.log(visibleExpenses);
-});
+//});
 // const expenseOne = store.dispatch(
 //   addExpense({ description: "Water bill", amount: 100, createdAt: 1000 })
 // );
@@ -44,5 +44,8 @@ const jsx = (
     <Approuter />
   </Provider>
 );
+ReactDOM.render(<p>Loading....</p>, document.getElementById("app"));
+store.dispatch(startSetExpenses()).then(()=>{
+  ReactDOM.render(jsx, document.getElementById("app"));
+});
 
-ReactDOM.render(jsx, document.getElementById("app"));
