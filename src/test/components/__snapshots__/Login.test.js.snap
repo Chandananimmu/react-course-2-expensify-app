@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shud logout on button click 1`] = `
+<div>
+  <button
+    onClick={[Function]}
+  >
+    Login
+  </button>
+</div>
+`;
+
+exports[`shud render login correctly 1`] = `
+<div>
+  <button
+    onClick={[Function]}
+  >
+    Login
+  </button>
+</div>
+`;

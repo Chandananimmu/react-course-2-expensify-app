@@ -5,8 +5,12 @@ import EditPage from "../components/EditPage";
 import HelpPage from "../components/HelpPage";
 import Header from "../components/Header";
 import NotFoundPage from "../components/NotFoundPage";
+import LoginPage from "../components/Login";
+import createHistory from "history/createBrowserHistory"
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 import {
-  BrowserRouter,
+  Router,
   Route,
   Switch,
   Link,
@@ -32,21 +36,25 @@ import {
 //     </main>
 //   </div>
 // )
-
+export const history=createHistory();
 const Approuter= () => (
-  <BrowserRouter>
+  <Router history={history}>
   <div>
-    <Header />
+
     <Switch>
-      <Route path="/create" component={AddExpenseDashBoard} />
-      <Route path="/edit/:id" component={EditPage} />
+    <PublicRoute path="/" component={LoginPage} exact={true} />
+      <PrivateRoute path="/create" component={AddExpenseDashBoard} />
+      <PrivateRoute path="/dashboard" component={ExpenseDashBoard}  />
+      
+      <PrivateRoute path="/edit/:id" component={EditPage} />
       <Route path="/help" component={HelpPage} />
       <Route path="/contact" render={() => <h1>Contact Us</h1>} />
-      <Route path="/" component={ExpenseDashBoard} exact />
+  
+   
       <Route component={NotFoundPage} />
     </Switch>
   </div>
-  </BrowserRouter>
+  </Router>
 );
 
 // const App = () => (
