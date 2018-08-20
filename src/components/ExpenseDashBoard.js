@@ -5,8 +5,9 @@ import ExpenseSummary from "./ExpenseSummary";
 const ExpenseDashBoard = () => (
   <div>
     <ExpenseSummary />
-    <ExpenseList />
     <ExpenseListFilter />
+    <ExpenseList />
+  
   </div>
 );
 export default ExpenseDashBoard;
