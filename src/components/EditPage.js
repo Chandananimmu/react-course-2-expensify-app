@@ -3,14 +3,30 @@ import ExpenseForm from "./ExpenseForm";
 import { connect } from "react-redux";
 import { startEditExpense } from "../actions/expenses";
 import { startRemoveExpense } from "../actions/expenses";
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'
 export class EditPage extends React.Component {
   onSubmit =( expense) => {
     this.props.startEditExpense(this.props.expense.id, expense);
     this.props.history.push("/");
   };
   onClick = () => {
-    this.props.startRemoveExpense({ id: this.props.expense.id });
-    this.props.history.push("/");
+    confirmAlert({
+      title: 'Confirm to submit',
+      message: 'Are you sure to do this.',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => { this.props.startRemoveExpense({ id: this.props.expense.id });
+          this.props.history.push("/");}
+        },
+        {
+          label: 'No',
+          onClick: () =>{ this.props.history.push("/");}
+        }
+      ]
+    })
+   
   };
   render() {
     return (
